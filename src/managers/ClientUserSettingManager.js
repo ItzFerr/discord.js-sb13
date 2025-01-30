@@ -204,7 +204,11 @@ class ClientUserSettingManager extends BaseManager {
       this.client.user.setPresence({ activities });
     }
     if ('friend_source_flags' in data) {
-      // Todo
+      this.addFriendFrom = {
+        all: data.friend_source_flags?.all || false,
+        mutual_friends: data.friend_source_flags?.mutual_friends || false,
+        mutual_guilds: data.friend_source_flags?.mutual_guilds || false,
+      };
     }
     if ('restricted_guilds' in data) {
       /**
